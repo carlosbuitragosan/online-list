@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="main-title">SHOPPING LIST</h1>
+      <h1 className="main-title">ONLINE LIST</h1>
       <main>
         <Form addListItem={addListItem} />
         <ul className="list">
