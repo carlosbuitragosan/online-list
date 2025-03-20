@@ -1,6 +1,6 @@
 {
-  "short_name": "ShoppingList",
-  "name": "Shopping List",
+  "short_name": "OnlineList",
+  "name": "Online List",
   "icons": [
     {
       "src": "public/icons/icon-64.png",
