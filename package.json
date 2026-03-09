@@ -1,5 +1,6 @@
 {
-  "name": "shopping_list",
+  "name": "online_list",
+  "homepage": "https://carlosbuitragosan.github.io/online-list",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,7 +41,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.36.1",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.3.3"
   }
 }
