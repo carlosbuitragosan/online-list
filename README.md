@@ -14,7 +14,7 @@ React · JavaScript · CSS · Web App Manifest (PWA)
 
 ## Deployment
 
-Deployed via a lightweight CI/CD pipeline using GitHub Actions. Each push to main triggers an automated build and deployment workflow that compiles the React production bundle and publishes the build artifact to GitHub Pages.
+Deployed via a lightweight CI/CD pipeline using GitHub Actions. Relevant changes pushed to main trigger an automated build and deployment workflow that compiles the React production bundle and publishes the build artifact to GitHub Pages.
 
 ## Next Steps
 
