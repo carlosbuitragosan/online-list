@@ -1,5 +1,6 @@
 name: Deploy Online List to GitHub Pages
 
+# Run on push to main only when those paths change
 on:
   push:
     branches:
@@ -11,45 +12,64 @@ on:
       - "package-lock.json"
       - ".github/workflows/**"
 
+# Prevent overlapping deployments
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+# Permission to read repository, write to GitHub Pages with id for security
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
+  # Compile react 
   build:
+    # Create new Linux machine
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
+        # Download the repository
         uses: actions/checkout@v4
 
       - name: Setup Node
+        # Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          # Store packages in cache for future builds
           cache: npm
 
       - name: Install dependencies
+        # Install exact dependencies from package-lock.json
         run: npm ci
 
       - name: Build
+        # Build production version of react app
         run: npm run build
 
       - name: Upload artifact
+        # Upload built output as artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
 
+  # Deploy to GitHub Pages infrastructure (not a branch)
   deploy:
+    # Ensure previous job is complete
     needs: build
+    # Create new Linux machine
     runs-on: ubuntu-latest
 
     environment:
+      # Register deployment with GitHub Pages
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        # Deploy artifact to GitHug Pages
         uses: actions/deploy-pages@v4
